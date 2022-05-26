@@ -58,6 +58,7 @@ function cellClicked(elCell, i, j) {
         gIsTimer = false
     }
     if (gBoard[i][j].isMarked) return
+    if (gBoard[i][j].isShown) return
     gBoard[i][j].isShown = true;
     if (gStartGame) {
         createElements(i, j);
