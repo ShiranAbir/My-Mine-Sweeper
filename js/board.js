@@ -129,7 +129,6 @@ function showNeighbors(cellI, cellJ) {
             if (j < 0 || j >= gBoard[i].length) continue;
             if (gBoard[i][j].isShown === true) continue;
 
-            gBoard[i][j].isShown = true;
             cellClicked(null, i, j)
         }
     }
