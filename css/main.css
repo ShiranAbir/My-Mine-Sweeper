@@ -84,6 +84,7 @@ table {
     border: 5px outset rgb(162 135 114);
     color: rgb(255, 68, 0);
     font-size: 20px;
+    cursor: pointer;
 }
 
 #counter {
@@ -118,4 +119,5 @@ table {
     align-items: center;
     margin: auto;
     margin-top: 5px;
+    cursor: pointer;
 }

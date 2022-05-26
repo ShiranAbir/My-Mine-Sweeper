@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MineSweepers</title>
+    <title>MineSweeper</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -17,14 +17,22 @@
         <button id="live-conteiner">♥♥</button>
     </div>
     
-    <div onclick="restartGame()" id="smiley"></div>
+    <div id="smiley" onclick="restartGame()"></div>
     
     <div class="table-conteiner">
         <table>
             <tbody class="board"></tbody>
         </table>
     </div>
-    
+    <audio id="audio1">
+        <source src="audio/boom.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio2">
+        <source src="audio/sigh.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio3">
+        <source src="audio/yes.mp3" type="audio/mpeg">
+    </audio>
     <script src="js/main.js"></script>
     <script src="js/mines.js"></script>
     <script src="js/valid.js"></script>

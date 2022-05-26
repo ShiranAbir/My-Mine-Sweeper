@@ -1,5 +1,5 @@
 'use strict'
-
+//Creats the board that holds the data about every cell.
 function createBoard(ROWS, COLS) {
     var board = []
     for (var i = 0; i < ROWS; i++) {
@@ -14,6 +14,7 @@ function createBoard(ROWS, COLS) {
     return board
 }
 
+//Render the board to the page using HTML table.
 function renderBoard(board) {
     var strHTML = '';
     for (var i = 0; i < board.length; i++) {
@@ -46,6 +47,10 @@ function renderBoard(board) {
     elBoard.innerHTML = strHTML;
 }
 
+//Get the cell clicked and check for mine, win or lose. also starts the timer when first cell is clicked.
+//To make sure that the first cell clicked won't be a mine, it place the mines and 
+//count the neighbors only when first cell clicked.
+
 function cellClicked(elCell, i, j) {
     if (!gGame.isOn) return;
     if (gIsTimer) {
@@ -73,6 +78,9 @@ function cellClicked(elCell, i, j) {
     checkWin()
 }
 
+//Using createMines(),createValids() and shuffle() to create an array of true and false.
+//This true and false will be the value for 'isMine' in the cells.
+//Also shuffles the array so the first cell clickes won't be a mine.
 function createElements(i, j) {
     gGameElements = [];
     createMines(gUserLevel);
@@ -85,7 +93,9 @@ function createElements(i, j) {
     }
 }
 
-
+//Mark the cell by flag if the user clicks right click on a cell and check for win.
+//Counting to the global variable gGame the number of marked cells.
+//Also starts the timer if thats the first cell clicked.
 function cellMarked(elCell) {
     if (!gGame.isOn) return;
     if (gIsTimer) {
@@ -107,6 +117,7 @@ function cellMarked(elCell) {
     checkWin()
 }
 
+//Showing the neighbors of a non-mine-neighbors cell.
 function showNeighbors(cellI, cellJ) {
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;

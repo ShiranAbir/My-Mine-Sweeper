@@ -1,5 +1,6 @@
 'use strict'
 
+//Shuffle the array.
 function shuffle(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -11,6 +12,7 @@ function shuffle(array) {
     return array;
  }
 
+ //Set timer.
 function timer() {
     var startTime = Date.now();
     gTimerInterval = setInterval(function () {
