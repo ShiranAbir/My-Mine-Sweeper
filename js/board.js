@@ -69,12 +69,14 @@ function cellClicked(elCell, i, j) {
     } else {
         renderBoard(gBoard);
     }
-    checkGameOver()
-    showLives()
     gGame.shownCount++
+    
     if (gBoard[i][j].minesAroundCount === 0 && gBoard[i][j].isMine === false) {
         showNeighbors(i, j)
     }
+
+    checkGameOver()
+    showLives()
     checkWin()
 }
 
