@@ -6,7 +6,7 @@ function createBoard(ROWS, COLS) {
         var row = []
         for (var j = 0; j < COLS; j++) {
             var isMine = gGameElements.pop()
-            row.push({ 'isShown': false, 'isMine': isMine, 'minesAroundCount': 0, 'isMarked': false })
+            row.push({ 'isShown': false, 'isMine': isMine, 'minesAroundCount': 0, 'isMarked': false , 'clickedMine' : false })
         }
         board.push(row)
     }
@@ -57,12 +57,14 @@ function cellClicked(elCell, i, j) {
     gBoard[i][j].isShown = true;
     renderBoard(gBoard)
     checkGameOver()
-    checkWin()
+    showLives()
     gGame.shownCount++
     gIsTimer = false
+    checkWin()
 }
 
 function createElements() {
+    gGameElements = [];
     createMines(gUserLevel);
     createValids(gUserLevel);
     gGameElements.push(...gMines);
@@ -87,6 +89,7 @@ function cellMarked(elCell) {
         gBoard[cellI][cellJ].isMarked = true;
         gGame.markedCount++
     }
+    checkWin()
     renderBoard(gBoard)
     gIsTimer = false
 }

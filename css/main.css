@@ -1,24 +1,28 @@
 .board td {
 
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     text-align: center;
     font-size: 2.5em;
     color: rgb(255, 51, 0);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    border: 3px outset rgb(46, 46, 46) ;
+    border: 3px outset rgb(46, 46, 46);
 }
 
-h1{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 90px;
     margin-bottom: 5px;
-    letter-spacing: 10px;
+    letter-spacing: 30px;
     text-shadow: 2px 2px 2px #ab2b00;
     margin-top: 5px;
 }
 
-.board td:hover{
+h1 span {
+    font-size: 100px;
+}
+
+.board td:hover {
     outline: 10px rgba(255, 72, 0, 0.871);
     outline-style: groove;
     background-color: rgba(32, 17, 6, 0);
@@ -38,6 +42,7 @@ h1{
 
 .marked {
     background: rgba(0, 0, 0, 0);
+    font-size: 2.5em;
 }
 
 body {
@@ -49,48 +54,68 @@ body {
 
 }
 
-table{
+table {
     margin: auto;
     background-color: rgba(37, 27, 20, 0.887);
 }
 
-.table-conteiner{
+.table-conteiner {
     background-image: url("/img/3.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
     display: inline-block;
     margin: auto;
     border: 15px outset rgb(162 135 114);
     padding: 60px;
-    margin-top: 5px;
-
 }
 
-.bomb{
-    width: 55px;
-    height: 55px;
+.bomb {
+    width: 40px;
+    height: 40px;
 }
 
 
-.button-level{
+.button-level {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     width: 130px;
-    height: 55px;
+    height: 45px;
     border-radius: 20%;
-    background: linear-gradient(305deg,#593f34,#29342f);
+    background: linear-gradient(305deg, #593f34, #29342f);
     border: 5px outset rgb(162 135 114);
     color: rgb(255, 68, 0);
     font-size: 20px;
 }
 
-#counter{
+#counter {
     text-align: center;
     width: 130px;
+    height: 45px;
     border-radius: 20%;
-    background: linear-gradient(305deg,#593f34,#29342f);
+    background: linear-gradient(305deg, #593f34, #29342f);
     border: 5px outset rgb(162 135 114);
     color: rgb(255, 68, 0);
     font-size: 20px;
+    margin-left: 5px;
+    ;
+}
+
+#live-conteiner {
+    text-align: center;
+    width: 130px;
+    height: 45px;
+    border-radius: 20%;
+    background: linear-gradient(305deg, #593f34, #29342f);
+    border: 5px outset rgb(162 135 114);
+    color: rgb(255, 68, 0);
+    font-size: 20px;
+    margin-left: 5px;
+
+}
+
+.smiley {
+    height: 150px;
+    display: inline;
+    align-items: center;
     margin: auto;
     margin-top: 5px;
 }

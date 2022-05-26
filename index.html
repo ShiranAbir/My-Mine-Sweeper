@@ -8,29 +8,30 @@
 </head>
 
 <body onload="initGame()">
-    <h1>Mine Sweeper</h1>
+    <h1> <span>M</span>ine <span>S</span>weeper</h1>
     <div class="buttons-conteiner">
         <button class="button-level" onclick="getUserLevel(this)">ROOKIE</button>
         <button class="button-level" onclick="getUserLevel(this)">SERGEANT</button>
         <button class="button-level" onclick="getUserLevel(this)">MONSTER</button>
+        <button id="counter">0</button>
+        <button id="live-conteiner">♥♥</button>
     </div>
-    <div id="counter">0</div>
+    
+    <div onclick="restartGame()" id="smiley"></div>
+    
     <div class="table-conteiner">
         <table>
             <tbody class="board"></tbody>
         </table>
     </div>
     
-   
-    
-    
     <script src="js/main.js"></script>
     <script src="js/mines.js"></script>
     <script src="js/valid.js"></script>
     <script src="js/util.js"></script>
     <script src="js/board.js"></script>
-
-
+    <script src="js/live.js"></script>
+    <script src="js/gameSet.js"></script>
 
 </body>
 

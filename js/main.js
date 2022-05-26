@@ -1,12 +1,17 @@
 'use strict'
 
 var gValid = [];
-var gLevels = [ { 'level': 'ROOKIE', 'SIZE': 4, 'MINES': 2 },
-                { 'level': 'SERGEANT', 'SIZE': 8, 'MINES': 12 },
-                { 'level': 'MONSTER', 'SIZE': 12, 'MINES': 30 }];
+var gLevels = [{ 'level': 'ROOKIE', 'SIZE': 4, 'MINES': 2 },
+{ 'level': 'SERGEANT', 'SIZE': 8, 'MINES': 12 },
+{ 'level': 'MONSTER', 'SIZE': 12, 'MINES': 30 }];
 var gGameElements = [];
 var gMINE_IMG = '<img class="bomb" src="img/4.png" />';
+var gAlive_IMG = '<img class="smiley" src="img/normal.png" />';
+var gDead_IMG = '<img class="smiley" src="img/dead.png" />';
+var gWin_IMG = '<img class="smiley" src="img/win.png" />';
 var gBoard = [];
+var gIsGameOver = false;
+var gIsWin = false;
 var gMines = [];
 var gValids = [];
 var gIsTimer = true
@@ -17,48 +22,36 @@ var gGame = {
     shownCount: 0,
     markedCount: 0,
     secsPassed: 0,
+    lives: 2,
 }
 
-
 function initGame() {
-    gGame.isOn = true
+    gGame = {
+        isOn: true,
+        shownCount: 0,
+        markedCount: 0,
+        secsPassed: 0,
+        lives: 2,
+    }
+    gIsWin = false;
+    gIsGameOver = false;
+    showSmiley()
+    gGameElements = [];
+    gMines = [];
+    gValids = [];
+    showLives()
     createElements(gGameElements);
     gBoard = createBoard(+gUserLevel.SIZE, +gUserLevel.SIZE);
-    console.table(gBoard);
     setMinesNegsCount(gBoard);
     renderBoard(gBoard);
 }
 
-function checkGameOver() {
-    for (var i = 0; i < gBoard.length; i++) {
-        for (var j = 0; j < gBoard[0].length; j++) {
-            var currCell = gBoard[i][j];
-            if ((currCell.isShown) && (currCell.isMine)) {
-                clearInterval(gTimerInterval)
-                gGame.isOn = false
-                showMines()
-                return
-            }
-        }
-    }
-}
 
-function checkWin() {
-    var cellsCount = gUserLevel.SIZE * gUserLevel.SIZE;
-    console.log(cellsCount);
-    if (gGame.markedCount === gUserLevel.MINES && gGame.shownCount === cellsCount - gUserLevel.MINES) {
-        clearInterval(gTimerInterval)
-        gGame.isOn = false
-        showMines()
-        return
-    }
-}
-
-function getUserLevel(level){
+function getUserLevel(level) {
     var currLevel
-    for (var i = 0 ; i < gLevels.length;i++){
+    for (var i = 0; i < gLevels.length; i++) {
         currLevel = gLevels[i];
-        if (currLevel.level === level.innerText){
+        if (currLevel.level === level.innerText) {
             gUserLevel = currLevel
             clearInterval(gTimerInterval)
             gIsTimer = true
@@ -68,6 +61,21 @@ function getUserLevel(level){
         }
     }
 }
+showSmiley()
+function showSmiley() {
+    var elSmiley = document.getElementById('smiley')
+    if (gIsGameOver) {
+        elSmiley.innerHTML = gDead_IMG
+    } else if (gIsWin) {
+        elSmiley.innerHTML = gWin_IMG
+    } else {
+        elSmiley.innerHTML = gAlive_IMG
+    }
+}
+
+
+
+
 
 
 
