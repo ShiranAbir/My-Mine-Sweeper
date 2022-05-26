@@ -56,7 +56,7 @@ function getUserLevel(level) {
             clearInterval(gTimerInterval)
             gIsTimer = true
             document.getElementById("counter").innerText = 0;
-            initGame()
+            restartGame()
             return
         }
     }

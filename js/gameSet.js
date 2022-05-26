@@ -31,13 +31,11 @@ function checkGameOver() {
 function checkWin() {
     var cellsCount = gUserLevel.SIZE * gUserLevel.SIZE;
     if (gGame.markedCount === gUserLevel.MINES - (2 - gGame.lives) && cellsCount === gGame.shownCount + gGame.markedCount) {
-        console.log((2 - gGame.lives));
         clearInterval(gTimerInterval)
         gGame.isOn = false
         showMines()
         gIsWin = true;
         showSmiley()
-        console.log('WIN!');
         gStartGame = true;
         return
     }

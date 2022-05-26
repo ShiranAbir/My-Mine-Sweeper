@@ -50,6 +50,7 @@ function cellClicked(elCell, i, j) {
     if (!gGame.isOn) return;
     if (gIsTimer) {
         timer()
+        gIsTimer = false
     }
     if (gBoard[i][j].isMarked) return
     gBoard[i][j].isShown = true;
@@ -66,7 +67,9 @@ function cellClicked(elCell, i, j) {
     checkGameOver()
     showLives()
     gGame.shownCount++
-    gIsTimer = false
+    if (gBoard[i][j].minesAroundCount === 0 && gBoard[i][j].isMine === false) {
+        showNeighbors(i, j)
+    }
     checkWin()
 }
 
@@ -87,6 +90,7 @@ function cellMarked(elCell) {
     if (!gGame.isOn) return;
     if (gIsTimer) {
         timer()
+        gIsTimer = false
     }
     var cellPos = elCell.id.split('-');
     var cellI = +cellPos[0];
@@ -99,7 +103,20 @@ function cellMarked(elCell) {
         gBoard[cellI][cellJ].isMarked = true;
         gGame.markedCount++
     }
-    checkWin()
     renderBoard(gBoard)
-    gIsTimer = false
+    checkWin()
+}
+
+function showNeighbors(cellI, cellJ) {
+    for (var i = cellI - 1; i <= cellI + 1; i++) {
+        if (i < 0 || i >= gBoard.length) continue;
+        for (var j = cellJ - 1; j <= cellJ + 1; j++) {
+            if (i === cellI && j === cellJ) continue;
+            if (j < 0 || j >= gBoard[i].length) continue;
+            if (gBoard[i][j].isShown === true) continue;
+
+            gBoard[i][j].isShown = true;
+            cellClicked(null, i, j)
+        }
+    }
 }
