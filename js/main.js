@@ -1,17 +1,17 @@
 'use strict'
 
 var gValid = [];
-var gLevels = [ { 'level': 'Beginner', 'SIZE': 4, 'MINES': 2 },
-                { 'level': 'Medium', 'SIZE': 8, 'MINES': 12 },
-                { 'level': 'Expert', 'SIZE': 12, 'MINES': 30 }];
+var gLevels = [ { 'level': 'ROOKIE', 'SIZE': 4, 'MINES': 2 },
+                { 'level': 'SERGEANT', 'SIZE': 8, 'MINES': 12 },
+                { 'level': 'MONSTER', 'SIZE': 12, 'MINES': 30 }];
 var gGameElements = [];
-var gMINE_IMG = '💣';
+var gMINE_IMG = '<img class="bomb" src="img/4.png" />';
 var gBoard = [];
 var gMines = [];
 var gValids = [];
 var gIsTimer = true
 var gTimerInterval
-var gUserLevel = { 'level': 'Beginner', 'SIZE': 4, 'MINES': 2 }
+var gUserLevel = { 'level': 'ROOKIE', 'SIZE': 4, 'MINES': 2 }
 var gGame = {
     isOn: false,
     shownCount: 0,
@@ -60,6 +60,9 @@ function getUserLevel(level){
         currLevel = gLevels[i];
         if (currLevel.level === level.innerText){
             gUserLevel = currLevel
+            clearInterval(gTimerInterval)
+            gIsTimer = true
+            document.getElementById("counter").innerText = 0;
             initGame()
             return
         }

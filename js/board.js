@@ -22,7 +22,7 @@ function renderBoard(board) {
             var currCell = board[i][j];
             if (currCell.isShown === false) {
                 if (currCell.isMarked) {
-                    strHTML += `<td id="${i}-${j}" class="marked" oncontextmenu= "cellMarked(this);return false;" onclick="cellClicked(this,${i},${j})"></td>`
+                    strHTML += `<td id="${i}-${j}" class="marked" oncontextmenu= "cellMarked(this);return false;" onclick="cellClicked(this,${i},${j})">🚩</td>`
                 } else {
                     strHTML += `<td id="${i}-${j}" class="notShown" oncontextmenu= "cellMarked(this);return false;" onclick="cellClicked(this,${i},${j})"></td>`
                 }

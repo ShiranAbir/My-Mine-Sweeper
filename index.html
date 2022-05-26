@@ -8,17 +8,21 @@
 </head>
 
 <body onload="initGame()">
-    
-    <div id="counter">im the counter</div>
-    <table>
-        <tbody class="board"></tbody>
-    </table>
-    <div class="buttons">
-        <button onclick="getUserLevel(this)">Beginner</button>
-        <button onclick="getUserLevel(this)">Medium</button>
-        <button onclick="getUserLevel(this)">Expert</button>
+    <h1>Mine Sweeper</h1>
+    <div class="buttons-conteiner">
+        <button class="button-level" onclick="getUserLevel(this)">ROOKIE</button>
+        <button class="button-level" onclick="getUserLevel(this)">SERGEANT</button>
+        <button class="button-level" onclick="getUserLevel(this)">MONSTER</button>
     </div>
-    <h1>Mine Sweepers</h1>
+    <div id="counter">0</div>
+    <div class="table-conteiner">
+        <table>
+            <tbody class="board"></tbody>
+        </table>
+    </div>
+    
+   
+    
     
     <script src="js/main.js"></script>
     <script src="js/mines.js"></script>
