@@ -20,6 +20,7 @@ function checkGameOver() {
                     showMines()
                     gIsGameOver = true
                     showSmiley()
+                    gStartGame = true
                     return
                 }
             }
@@ -37,6 +38,7 @@ function checkWin() {
         gIsWin = true;
         showSmiley()
         console.log('WIN!');
+        gStartGame = true;
         return
     }
 }

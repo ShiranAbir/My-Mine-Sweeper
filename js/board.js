@@ -5,8 +5,8 @@ function createBoard(ROWS, COLS) {
     for (var i = 0; i < ROWS; i++) {
         var row = []
         for (var j = 0; j < COLS; j++) {
-            var isMine = gGameElements.pop()
-            row.push({ 'isShown': false, 'isMine': isMine, 'minesAroundCount': 0, 'isMarked': false , 'clickedMine' : false })
+            var isMine = gGameElements[ROWS * i + j]
+            row.push({ 'isShown': false, 'isMine': isMine, 'minesAroundCount': 0, 'isMarked': false, 'clickedMine': false })
         }
         board.push(row)
     }
@@ -46,8 +46,6 @@ function renderBoard(board) {
     elBoard.innerHTML = strHTML;
 }
 
-
-//TODO: Add timer start for right click!
 function cellClicked(elCell, i, j) {
     if (!gGame.isOn) return;
     if (gIsTimer) {
@@ -55,7 +53,16 @@ function cellClicked(elCell, i, j) {
     }
     if (gBoard[i][j].isMarked) return
     gBoard[i][j].isShown = true;
-    renderBoard(gBoard)
+    if (gStartGame) {
+        createElements(i, j);
+        gBoard = createBoard(+gUserLevel.SIZE, +gUserLevel.SIZE);
+        gBoard[i][j].isShown = true;
+        setMinesNegsCount(gBoard);
+        renderBoard(gBoard)
+        gStartGame = false
+    } else {
+        renderBoard(gBoard);
+    }
     checkGameOver()
     showLives()
     gGame.shownCount++
@@ -63,13 +70,16 @@ function cellClicked(elCell, i, j) {
     checkWin()
 }
 
-function createElements() {
+function createElements(i, j) {
     gGameElements = [];
     createMines(gUserLevel);
     createValids(gUserLevel);
     gGameElements.push(...gMines);
     gGameElements.push(...gValids);
     shuffle(gGameElements);
+    while (gGameElements[gUserLevel.SIZE * i + j] === true) {
+        shuffle(gGameElements);
+    }
 }
 
 

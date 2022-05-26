@@ -15,6 +15,7 @@ var gIsWin = false;
 var gMines = [];
 var gValids = [];
 var gIsTimer = true
+var gStartGame = true;
 var gTimerInterval
 var gUserLevel = { 'level': 'ROOKIE', 'SIZE': 4, 'MINES': 2 }
 var gGame = {
@@ -26,6 +27,7 @@ var gGame = {
 }
 
 function initGame() {
+    gStartGame = true;
     gGame = {
         isOn: true,
         shownCount: 0,
@@ -40,9 +42,7 @@ function initGame() {
     gMines = [];
     gValids = [];
     showLives()
-    createElements(gGameElements);
     gBoard = createBoard(+gUserLevel.SIZE, +gUserLevel.SIZE);
-    setMinesNegsCount(gBoard);
     renderBoard(gBoard);
 }
 
@@ -61,7 +61,7 @@ function getUserLevel(level) {
         }
     }
 }
-showSmiley()
+
 function showSmiley() {
     var elSmiley = document.getElementById('smiley')
     if (gIsGameOver) {
