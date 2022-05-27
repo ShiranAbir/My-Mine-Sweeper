@@ -48,9 +48,6 @@ function renderBoard(board) {
 }
 
 //Get the cell clicked and check for mine, win or lose. also starts the timer when first cell is clicked.
-//To make sure that the first cell clicked won't be a mine, it place the mines and 
-//count the neighbors only when first cell clicked.
-
 function cellClicked(elCell, i, j) {
     if (!gGame.isOn) return;
     if (gIsTimer) {
@@ -61,26 +58,21 @@ function cellClicked(elCell, i, j) {
     if (gBoard[i][j].isShown) return
     gBoard[i][j].isShown = true;
     if (gStartGame) {
-        createElements(i, j);
-        gBoard = createBoard(+gUserLevel.SIZE, +gUserLevel.SIZE);
-        gBoard[i][j].isShown = true;
-        setMinesNegsCount(gBoard);
-        renderBoard(gBoard)
-        gStartGame = false
+        firstCellClicked(i, j)
     } else {
         renderBoard(gBoard);
     }
     gGame.shownCount++
-    
+
     if (gBoard[i][j].minesAroundCount === 0 && gBoard[i][j].isMine === false) {
         showNeighbors(i, j)
     }
-
     checkGameOver()
     showLives()
-    checkWin()
+    if (gGame.isOn) {
+        checkWin()
+    }
 }
-
 //Using createMines(),createValids() and shuffle() to create an array of true and false.
 //This true and false will be the value for 'isMine' in the cells.
 //Also shuffles the array so the first cell clickes won't be a mine.
@@ -132,4 +124,15 @@ function showNeighbors(cellI, cellJ) {
             cellClicked(null, i, j)
         }
     }
+}
+
+//To make sure that the first cell clicked won't be a mine, it place the mines and 
+//count the neighbors only when first cell clicked. 
+function firstCellClicked(i, j) {
+    createElements(i, j);
+    gBoard = createBoard(+gUserLevel.SIZE, +gUserLevel.SIZE);
+    gBoard[i][j].isShown = true;
+    setMinesNegsCount(gBoard);
+    renderBoard(gBoard)
+    gStartGame = false
 }
