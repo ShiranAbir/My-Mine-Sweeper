@@ -62,6 +62,8 @@ function gameEnd() {
 //Check if the user have Hint to use.
 function setHint() {
     if (!gHints) return
+    var audio = document.getElementById('audio6')
+    audio.play()
     isHint = true
     renderHints()
 }
@@ -98,7 +100,6 @@ function showHint(elCell) {
     isHint = false;
     gHints--
     renderHints()
-
 }
 
 //render the live amount to the screen using HTML string.
@@ -144,6 +145,8 @@ function showSafeCell() {
     }
     gSafeClicks--
     renderSafeClicks()
+    var audio = document.getElementById('audio7')
+    audio.play();
     var elCell = document.getElementById(`${safeCell.i}-${safeCell.j}`);
     elCell.classList.add('safe-cell');
     setTimeout(() => {
@@ -155,4 +158,10 @@ function showSafeCell() {
 function renderSafeClicks() {
     var elSafeBtn = document.getElementById('button-safe-cell');
     elSafeBtn.innerText = gSafeClicks + ' SAFE!'
+}
+
+//Play go when click the smiley.
+function playGoSound() {
+    var audio = document.getElementById('audio5')
+    audio.play()
 }

@@ -73,6 +73,13 @@ table {
     height: 40px;
 }
 
+.button-level:hover{
+    background: linear-gradient(305deg, #ff4d00, #ffbf00);
+    color: rgb(24, 24, 24);
+    outline: 2px rgba(255, 64, 0, 0.871);
+    border: 5px outset rgb(179, 78, 0);
+    outline-style: solid;
+} 
 
 .button-level {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -87,6 +94,8 @@ table {
     cursor: pointer;
 }
 
+
+
 #button-safe-cell{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
@@ -99,6 +108,7 @@ table {
     font-size: 20px;
     cursor: pointer;
 }
+
 
 #button-hint{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

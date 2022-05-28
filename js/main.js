@@ -7,9 +7,9 @@ var gLevels = [{ 'level': 'ROOKIE', 'SIZE': 4, 'MINES': 2, 'Lives': 2 },
 { 'level': 'MONSTER', 'SIZE': 12, 'MINES': 30, 'Lives': 3 }];
 var gGameElements = [];
 var gMINE_IMG = '<img class="bomb" src="img/4.png" />';
-var gAlive_IMG = '<img class="smiley" src="img/normal.png" />';
-var gDead_IMG = '<img class="smiley" src="img/dead.png" />';
-var gWin_IMG = '<img class="smiley" src="img/win.png" />';
+var gAlive_IMG = '<img onclick="restartGame(); playGoSound()" class="smiley" src="img/normal.png" />';
+var gDead_IMG = '<img onclick="restartGame(); playGoSound()" class="smiley" src="img/dead.png" />';
+var gWin_IMG = '<img onclick="restartGame(); playGoSound()" class="smiley" src="img/win.png" />';
 var gHintOn_IMG = '<img class="hint-on" src="img/on.png" />';
 var gHintOff_IMG = '<img class="hint-off" src="img/off.png" />';
 var gBoomSound = document.getElementById("audio1");

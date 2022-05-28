@@ -10,16 +10,16 @@
 <body onload="initGame()">
     <h1> <span>M</span>ine <span>S</span>weeper</h1>
     <div class="buttons-conteiner">
-        <button class="button-level" onclick="getUserLevel(this)">ROOKIE</button>
-        <button class="button-level" onclick="getUserLevel(this)">SERGEANT</button>
-        <button class="button-level" onclick="getUserLevel(this)">MONSTER</button>
+        <button class="button-level" onmouseover="document.getElementById('audio4').play()" onclick="getUserLevel(this)">ROOKIE</button>
+        <button class="button-level" onmouseover="document.getElementById('audio4').play()" onclick="getUserLevel(this)">SERGEANT</button>
+        <button class="button-level" onmouseover="document.getElementById('audio4').play()" onclick="getUserLevel(this)">MONSTER</button>
         <button id="button-safe-cell" onclick="showSafeCell()">3 SAFE!</button>
         <button id="button-hint" onclick="setHint()"></button>
         <button id="counter">0</button>
         <button id="live-conteiner">♥♥</button>
     </div>
     
-    <div id="smiley" onclick="restartGame()"></div>
+    <div id="smiley"></div>
     
     <div class="table-conteiner">
         <table>
@@ -34,6 +34,18 @@
     </audio>
     <audio id="audio3">
         <source src="audio/yes.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio4">
+        <source src="audio/level.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio5">
+        <source src="audio/go.wav" type="audio/wav">
+    </audio>
+    <audio id="audio6">
+        <source src="audio/hint.mp3" type="audio/wav">
+    </audio>
+    <audio id="audio7">
+        <source src="audio/safe.mp3" type="audio/wav">
     </audio>
     <script src="js/main.js"></script>
     <script src="js/mines.js"></script>
