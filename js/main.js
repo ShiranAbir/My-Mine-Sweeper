@@ -10,12 +10,16 @@ var gMINE_IMG = '<img class="bomb" src="img/4.png" />';
 var gAlive_IMG = '<img class="smiley" src="img/normal.png" />';
 var gDead_IMG = '<img class="smiley" src="img/dead.png" />';
 var gWin_IMG = '<img class="smiley" src="img/win.png" />';
+var gHintOn_IMG = '<img class="hint-on" src="img/on.png" />';
+var gHintOff_IMG = '<img class="hint-off" src="img/off.png" />';
 var gBoomSound = document.getElementById("audio1");
 var gSighSound = document.getElementById("audio2");
 var gYesSound = document.getElementById("audio3");
 var gBoard = [];
 var gIsGameOver = false;
 var gIsWin = false;
+var isHint = false;
+var gHints = 3
 var gMines = [];
 var gValids = [];
 var gIsTimer = true
@@ -41,6 +45,7 @@ function initGame() {
         secsPassed: 0,
         lives: gUserLevel.Lives,
     }
+    gHints = 3
     gIsWin = false;
     gIsGameOver = false;
     showSmiley()
@@ -48,6 +53,7 @@ function initGame() {
     gMines = [];
     gValids = [];
     showLives()
+    renderHints()
     gBoard = createBoard(+gUserLevel.SIZE, +gUserLevel.SIZE);
     renderBoard(gBoard);
 }

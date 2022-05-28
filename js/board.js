@@ -25,7 +25,7 @@ function renderBoard(board) {
                 if (currCell.isMarked) {
                     strHTML += `<td id="${i}-${j}" class="marked" oncontextmenu= "cellMarked(this);return false;" onclick="cellClicked(this,${i},${j})">🚩</td>`
                 } else {
-                    strHTML += `<td id="${i}-${j}" class="notShown" oncontextmenu= "cellMarked(this);return false;" onclick="cellClicked(this,${i},${j})"></td>`
+                    strHTML += `<td id="${i}-${j}" class="notShown" oncontextmenu= "cellMarked(this);return false;" onclick="cellClicked(this,${i},${j}); showHint(this)"></td>`
                 }
                 continue
             }
@@ -54,6 +54,7 @@ function cellClicked(elCell, i, j) {
         timer()
         gIsTimer = false
     }
+    if (isHint) return
     if (gBoard[i][j].isMarked) return
     if (gBoard[i][j].isShown) return
     gBoard[i][j].isShown = true;
