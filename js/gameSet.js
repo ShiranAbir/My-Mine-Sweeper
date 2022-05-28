@@ -165,3 +165,19 @@ function playGoSound() {
     var audio = document.getElementById('audio5')
     audio.play()
 }
+
+//Get the users level from the buttons and restart the timer.
+function getUserLevel(level) {
+    var currLevel
+    for (var i = 0; i < gLevels.length; i++) {
+        currLevel = gLevels[i];
+        if (currLevel.level === level.innerText) {
+            gUserLevel = currLevel
+            clearInterval(gTimerInterval)
+            gIsTimer = true
+            document.getElementById("counter").innerText = 0;
+            restartGame();
+            return;
+        }
+    }
+}

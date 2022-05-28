@@ -16,6 +16,7 @@ h1 {
     letter-spacing: 30px;
     text-shadow: 2px 2px 2px #ab2b00;
     margin-top: 5px;
+    color: rgb(22, 22, 22);
 }
 
 h1 span {
@@ -95,7 +96,6 @@ table {
 }
 
 
-
 #button-safe-cell{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
@@ -107,6 +107,14 @@ table {
     color: rgb(255, 68, 0);
     font-size: 20px;
     cursor: pointer;
+}
+
+#button-safe-cell:hover{
+    background: linear-gradient(305deg, #2f211b, #2c190b);
+    color: rgb(255, 55, 0);
+    outline: 2px rgba(36, 11, 2, 0.871);
+    border: 5px outset rgb(255, 111, 0);
+    outline-style: solid;
 }
 
 
@@ -121,6 +129,14 @@ table {
     color: rgb(255, 68, 0);
     font-size: 20px;
     cursor: pointer;
+}
+
+#button-hint:hover{
+    color: rgb(24, 24, 24);
+    background: linear-gradient(305deg, #593f34, #ffc800);
+    outline: 2px rgba(57, 57, 57, 0.871);
+    border: 5px outset rgb(255, 242, 0);
+    outline-style: solid; 
 }
 
 #counter {
