@@ -1,7 +1,7 @@
 'use strict'
 
 //Restarts the game by clearing the timer interval, set gIsTimer to true,
-//set the timer to 0 and call initGame().
+//set the best score alert, set the timer to 0 and call initGame().
 function restartGame() {
     clearInterval(gTimerInterval)
     gIsTimer = true
@@ -56,6 +56,7 @@ function gameEnd() {
     clearInterval(gTimerInterval)
     gGame.isOn = false
     gStartGame = true;
+    alertScore()
 }
 
 //Sets isHint to true when HINT! push.
@@ -180,4 +181,70 @@ function getUserLevel(level) {
             return;
         }
     }
+}
+
+//Keep the best score by level in local storage.
+function setBestScore() {
+    var timeScore = document.getElementById("counter").innerText;
+    var level = gUserLevel.level
+    if (level === 'ROOKIE') {
+        if (localStorage.timeScore1) {
+            if (+localStorage.timeScore1 > +timeScore) {
+                localStorage.timeScore1 = timeScore;
+                return true;
+            }
+        } else {
+            localStorage.timeScore1 = timeScore;
+            return true;
+        }
+    }
+    if (level === 'SERGEANT') {
+        if (localStorage.timeScore2) {
+            if (+localStorage.timeScore2 > +timeScore) {
+                localStorage.timeScore2 = timeScore;
+                return true;
+            }
+        } else {
+            localStorage.timeScore2 = timeScore;
+            return true;
+        }
+    }
+    if (level === 'MONSTER') {
+        if (localStorage.timeScore3) {
+            if (+localStorage.timeScore3 > +timeScore) {
+                localStorage.timeScore3 = timeScore;
+                return true;
+            }
+        } else {
+            localStorage.timeScore3 = timeScore;
+            return true;
+        }
+    }
+
+    
+    return false;
+}
+
+//Gets best score by level for local storage.
+function getBestScore() {
+    var level = gUserLevel.level
+    if (level === 'ROOKIE') {
+        return localStorage.timeScore1
+    }
+    if (level === 'SERGEANT') {
+        return localStorage.timeScore2   
+    }
+    if (level === 'MONSTER') {
+        return localStorage.timeScore3     
+    }
+}
+
+//Alert the best score.
+function alertScore() {
+    if (!gIsWin) return
+    if (setBestScore()) {
+        alert('Well done soldier! Your score was the best: ' + getBestScore());
+    } else {
+        alert('Didn\'t you eat breakfast today, soldier?! The best score is: ' + getBestScore())
+    }    
 }
