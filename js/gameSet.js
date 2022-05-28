@@ -5,8 +5,12 @@
 function restartGame() {
     clearInterval(gTimerInterval)
     gIsTimer = true
+    gSafeCells = []
+    gSafeClicks = 3
     gHints = 3
-    document.getElementById("counter").innerText = 0;
+    gSafeCells = 3
+    document.getElementById('counter').innerText = 0;
+    document.getElementById('button-safe-cell').innerText = '3 SAFE!'
     initGame()
 }
 
@@ -73,7 +77,7 @@ function showHint(elCell) {
 
     // pushes the current clicked cell, because it's already shown
     hintedCells.push({ i: cellPos[0], j: cellPos[1] })
-    
+
     for (var i = +cellPos[0] - 1; i <= +cellPos[0] + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;
         for (var j = +cellPos[1] - 1; j <= +cellPos[1] + 1; j++) {
@@ -100,7 +104,7 @@ function showHint(elCell) {
 //render the live amount to the screen using HTML string.
 function renderHints() {
     var strHTML = '';
-    var elHintCon = document.getElementById('button-hint');
+    var elHintBtn = document.getElementById('button-hint');
     if (+gHints > 0) {
         if (!isHint) {
             strHTML += gHintOff_IMG.repeat(+gHints);
@@ -111,5 +115,44 @@ function renderHints() {
     } else {
         strHTML = '0'
     }
-    elHintCon.innerHTML = strHTML;
+    elHintBtn.innerHTML = strHTML;
+}
+
+//Makes an array of all non-mine cells, then randomizes it.
+function getRandSafeCells() {
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[0].length; j++) {
+            if (gBoard[i][j].isMine === false) {
+                gSafeCells.push({ i, j });
+            }
+        }
+    }
+    shuffle(gSafeCells)
+}
+
+//Pop safe cell from the randomize safe cells array.
+//Checks if it was already shown, if so pops another one.
+//Then adds a 'safe-cell' class for 3 seconds to hint it. 
+function showSafeCell() {
+    if (!gSafeClicks) return
+    if (gStartGame) return
+    if (gSafeCells.length === 0) return
+    var safeCell = gSafeCells.pop();
+    while (gBoard[safeCell.i][safeCell.j].isShown === true) {
+        if (gSafeCells.length === 0) return
+        safeCell = gSafeCells.pop();
+    }
+    gSafeClicks--
+    renderSafeClicks()
+    var elCell = document.getElementById(`${safeCell.i}-${safeCell.j}`);
+    elCell.classList.add('safe-cell');
+    setTimeout(() => {
+        elCell.classList.remove('safe-cell');
+    }, 3000);
+}
+
+//render the safe click amount to the screen using HTML string.
+function renderSafeClicks() {
+    var elSafeBtn = document.getElementById('button-safe-cell');
+    elSafeBtn.innerText = gSafeClicks + ' SAFE!'
 }

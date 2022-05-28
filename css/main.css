@@ -87,6 +87,19 @@ table {
     cursor: pointer;
 }
 
+#button-safe-cell{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    width: 130px;
+    height: 45px;
+    border-radius: 20%;
+    background: linear-gradient(305deg, #593f34, #29342f);
+    border: 5px outset rgb(162 135 114);
+    color: rgb(255, 68, 0);
+    font-size: 20px;
+    cursor: pointer;
+}
+
 #button-hint{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
@@ -142,4 +155,8 @@ table {
     margin: auto;
     margin-top: 5px;
     cursor: pointer;
+}
+
+.safe-cell{
+    background-color: #ab2b00;
 }

@@ -64,7 +64,6 @@ function cellClicked(elCell, i, j) {
         renderBoard(gBoard);
     }
     gGame.shownCount++
-
     if (gBoard[i][j].minesAroundCount === 0 && gBoard[i][j].isMine === false) {
         showNeighbors(i, j)
     }
@@ -135,5 +134,6 @@ function firstCellClicked(i, j) {
     gBoard[i][j].isShown = true;
     setMinesNegsCount(gBoard);
     renderBoard(gBoard)
+    getRandSafeCells()
     gStartGame = false
 }

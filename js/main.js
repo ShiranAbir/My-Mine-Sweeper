@@ -19,7 +19,9 @@ var gBoard = [];
 var gIsGameOver = false;
 var gIsWin = false;
 var isHint = false;
+var gSafeCells = []
 var gHints = 3
+var gSafeClicks = 3
 var gMines = [];
 var gValids = [];
 var gIsTimer = true
@@ -48,6 +50,7 @@ function initGame() {
     gHints = 3
     gIsWin = false;
     gIsGameOver = false;
+    gSafeCells = [];
     showSmiley()
     gGameElements = [];
     gMines = [];

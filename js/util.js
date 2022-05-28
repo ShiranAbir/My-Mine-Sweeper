@@ -20,3 +20,4 @@ function timer() {
         document.getElementById("counter").innerText = (elapsedTime / 1000).toFixed(0);
     }, 1);
 }
+
